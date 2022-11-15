@@ -14,7 +14,7 @@ export function Tomato({ ...props }) {
   
   useFrame(({ clock}) => {
     const elapsedTime = clock.getElapsedTime();  
-    tomatoRef.current.rotation.y = 0
+    // tomatoRef.current.rotation.y = elapsedTime / 1;
   });
 
   const bind = useDrag(

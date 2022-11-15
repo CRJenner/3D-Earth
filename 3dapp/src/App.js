@@ -8,6 +8,8 @@ import { Suspense } from "react";
 //import { Corn } from "./Components/Corn";
 //import { VegScene } from "./Components/VegScene";
 import { Tomato } from "./Components/Tomato";
+import { Carrot } from "./Components/Carrot";
+
 
 const CanvasContainer = styled.div`
   width: 100%;
@@ -18,7 +20,8 @@ function App() {
   return (
     <CanvasContainer>
       <Canvas>
-        <Suspense fallback={null}>
+        <Suspense fallback={null}>//
+            <Carrot />
             <Tomato />
         </Suspense>
       </Canvas>
