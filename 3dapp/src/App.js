@@ -1,7 +1,7 @@
 import "./App.css";
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
-import { Physics } from "@react-three/cannon";
+//import { Physics } from "@react-three/cannon";
 import { Suspense } from "react";
 ////import { Earth } from "./Components/index";
 //import { Veggies } from "./Components/Veggies";
@@ -19,9 +19,7 @@ function App() {
     <CanvasContainer>
       <Canvas>
         <Suspense fallback={null}>
-          <Physics>
             <Tomato />
-          </Physics>
         </Suspense>
       </Canvas>
     </CanvasContainer>

@@ -1,21 +1,22 @@
 import useSpline from "@splinetool/r3f-spline";
 import { PerspectiveCamera } from "@react-three/drei";
 import React, { useRef, useState } from "react";
-import { Canvas, useThree, useFrame } from "@react-three/fiber";
+import { useThree, useFrame } from "@react-three/fiber";
 import { useDrag } from "react-use-gesture";
-import ReactDOM from "react-dom";
+
 
 export function Tomato({ ...props }) {
-  //const colors = ["hotpink", "red", "blue", "green", "yellow"];
-  const ref = useRef();
-  const [colorIdx, setColorIdx] = useState(0);
+  
+  const tomatoRef = useRef();
   const [position, setPosition] = useState([0, 0, 0]);
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
-  useFrame(() => {
-    ref.current.rotation.z += 0.01;
-    ref.current.rotation.x += 0.01;
+  
+  useFrame(({ clock}) => {
+    const elapsedTime = clock.getElapsedTime();  
+    tomatoRef.current.rotation.y = 0
   });
+
   const bind = useDrag(
     ({ offset: [x, y] }) => {
       const [, , z] = position;
@@ -28,26 +29,12 @@ export function Tomato({ ...props }) {
   );
   return (
     <>
-      <mesh
-        position={position}
-        {...bind()}
-        ref={ref}
-        onClick={(e) => {
-          if (colorIdx === 4) {
-            setColorIdx(0);
-          } else {
-            setColorIdx(colorIdx + 1);
-          }
-        }}
-        onPointerOver={(e) => console.log("hover")}
-        onPointerOut={(e) => console.log("unhover")}
-      >
         <color attach="background" args={["#5e6063"]} />
         <group {...props} dispose={null}>
           <group
-            name="tomato"
-            position={[-4.4, 4.66, 158.7]}
-            scale={[0.17, 0.14, 0.19]}
+            name="tomato" ref={tomatoRef}
+            position={position}
+            scale={[0.17, 0.14, 0.19]} {...bind()}
           >
             <mesh
               name="tomato1"
@@ -139,21 +126,7 @@ export function Tomato({ ...props }) {
             color="#eaeaea"
           />
         </group>
-      </mesh>
     </>
   );
 }
 
-ReactDOM.render(
-  <Canvas>
-    <spotLight
-      intensity={1.2}
-      position={[30, 30, 50]}
-      angle={0.2}
-      penumbra={1}
-      castShadow
-    />
-    <Tomato />
-  </Canvas>,
-  document.getElementById("root")
-);
