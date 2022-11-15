@@ -1,10 +1,13 @@
 import "./App.css";
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
+import { Physics } from "@react-three/cannon";
 import { Suspense } from "react";
+////import { Earth } from "./Components/index";
 //import { Veggies } from "./Components/Veggies";
 //import { Corn } from "./Components/Corn";
-import { VegScene } from "./Components/VegScene";
+//import { VegScene } from "./Components/VegScene";
+import { Tomato } from "./Components/Tomato";
 
 const CanvasContainer = styled.div`
   width: 100%;
@@ -16,7 +19,9 @@ function App() {
     <CanvasContainer>
       <Canvas>
         <Suspense fallback={null}>
-          <VegScene />
+          <Physics>
+            <Tomato />
+          </Physics>
         </Suspense>
       </Canvas>
     </CanvasContainer>

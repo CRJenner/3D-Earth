@@ -1,4 +1,6 @@
 import React from "react";
+//import { Physics, usePlane } from "@react-three/cannon";
+import { OrbitControls } from "@react-three/drei";
 import useSpline from "@splinetool/r3f-spline";
 import { OrthographicCamera } from "@react-three/drei";
 
@@ -1121,16 +1123,7 @@ export function VegScene({ ...props }) {
             />
           </group>
         </group>
-        <mesh
-          name="potatoe"
-          geometry={nodes.potatoe.geometry}
-          material={materials.potatoe}
-          castShadow
-          receiveShadow
-          position={[103.74, 13, -46.59]}
-          rotation={[0, 0, 0.87]}
-          scale={1}
-        />
+
         <group name="tomato" position={[-162.02, 176.95, 107.57]} scale={0.2}>
           <mesh
             name="tomato1"
@@ -1264,6 +1257,14 @@ export function VegScene({ ...props }) {
           shadow-camera-top={1250}
           shadow-camera-bottom={-1250}
           position={[200, 300, 300]}
+        />
+        <OrbitControls
+          enableZoom={true}
+          enablePan={true}
+          enableRotate={true}
+          zoomSpeed={0.6}
+          panSpeed={0.5}
+          rotateSpeed={0.4}
         />
         <OrthographicCamera
           name="1"
