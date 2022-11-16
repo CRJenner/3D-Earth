@@ -7,8 +7,9 @@ import { Suspense } from "react";
 //import { Veggies } from "./Components/Veggies";
 //import { Corn } from "./Components/Corn";
 //import { VegScene } from "./Components/VegScene";
-import { Tomato } from "./Components/Tomato";
-import { Carrot } from "./Components/Carrot";
+// import { Tomato } from "./Components/Tomato";
+// import { Carrot } from "./Components/Carrot";
+import {Allotment} from "./Components/Allotment"
 
 
 const CanvasContainer = styled.div`
@@ -21,8 +22,7 @@ function App() {
     <CanvasContainer>
       <Canvas>
         <Suspense fallback={null}>//
-            <Carrot />
-            <Tomato />
+            <Allotment/>
         </Suspense>
       </Canvas>
     </CanvasContainer>
